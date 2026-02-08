@@ -15,15 +15,19 @@ A very special class method is the **constructor**. In our example file, this is
 
 Consider example1.py
 
-
-
 ##### Task 1
+Convert the code for this number guessing game from a main block with functions to a class object.
+
+##### Task 2
+Convert the code for this quadratic function prgram to a class object.
+
+##### Task 3
 Rectangular Prism Object
 Create a class that creates a rectangular prism.  You should be able to set all of the important measurements (l,w,h) when the object is instantiated in the constructor and you should have class methods that determine the surface area and volume.
 You should have class methods that also allow you to change the dimensions of the object.
 Instantiate 3 separate rectangular prisms with the test data given, and check the assertions are correct.
 
-##### Task 2
+##### Task 4
 Compound Interest Calculator
 Create a class object that accepts paramters for Principal, Annual Interest Rate, Number of compounding periods.  
 Create a class method that calculates the amount of compound interest for a given length of time.

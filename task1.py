@@ -1,33 +1,57 @@
-"""
-Rectangular Prism Object
-Create a class that creates a rectangular prism.  You should be able to set all of the important measurements (l,w,h) when the object is instantiated in the constructor and you should have class methods that determine the surface area and volume.
-You should have class methods that also allow you to change the dimensions of the object.
-Instantiate 3 separate rectangular prisms with the test data given, and check the assertions are correct.
-"""
+import random
+import os
 
-class rectPrism:
+def showTitle():
+    # clear console and show instructions
+    os.system("clear||cls")
+    print("Welcome to the number guessing game!")
+    print("I will pick a secret number from 1 to 100. You must guess it!")
 
-    def __init__(self):
-        # note you will need to specify more input parameters
-        pass
+def generateSecret():
+    #generates random number from 1-100
+    return random.randint(1,100)
 
-    def volume(self):
-        return
-    
-    def surfaceArea(self):
-        return
+def getGuess():
+    #get the users's guess
+    while True:
+        try:
+            guess = int(input("Enter your guess. It should be an integer"))
+            if 1 <= guess <= 100:
+                break
+        except:
+            pass
+        print("That is not a valid input. Try again.")
+    return guess
 
-# class instances and assertions below:
+def compareGuess(a,b):
+    #return result as 0 for equal, -1 for low, 1 for hight
+    return 0 if a==b else (1 if a > b else -1)
+    # If you can't make sense of line 28, you can do the following code instead
+    if a == b:
+        return 0
+    elif a > b:
+        return 1
+    elif a < b:
+        return -1
 
-a = rectPrism(l=10,w=2,h=5)
-assert a.volume() == 100
-assert a.surfaceArea() == 160
+def showMessage(result):
+    #show message about accuracy of guess
+    messages = {
+        -1: "That guess is too low",
+        0 : "Correct!",
+        1 : "Your guess is too high"
+    }
+    print(result)
 
-b = rectPrism(l=1,w=1,h=1)
-assert b.volume() == 1
-assert b.surfaceArea == 6
-
-c = rectPrism(l=2,w=0,h=10)
-# note the invalid width
-assert c.volume() == None
-assert c.surfaceArea() == None
+if __name__ == "__main__":
+    showTitle()
+    secretNumber = generateSecret()
+    numberOfGuesses = 0
+    while True:
+        guess = getGuess()
+        numberOfGuesses += 1
+        result = compareGuess(guess,secretNumber)
+        showMessage(result)
+        if result == 0:
+            break
+    print(f"Congratulations! You guessed the secret number in {numberOfGuesses} tries")
