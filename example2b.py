@@ -20,12 +20,12 @@ class RPSGame:
             }
 
     def getPlayerChoice(self):
-        choice = ""
+        self.playerChoice = ""
         if self.debug:
             print("\n")
             return random.choice(self.valids)
         
-        while choice not in self.valids:
+        while self.playerChoice not in self.valids:
             self.playerChoice = input("Make your move:\nR rock\nP paper\nS scissors\nX Quit\n>").upper()
             if self.playerChoice not in self.valids:
                 print("That is not a valid choice\n")
@@ -80,13 +80,14 @@ class RPSGame:
 
     def __init__(self):
         while self.playerChoice != "X":
-            self.playerChoice = self.getPlayerChoice()
+            self.getPlayerChoice()
             if self.playerChoice != "X":
                 self.getComputerChoice()
                 self.showChoices()
                 time.sleep(1)
-                print( self.result( pwins()) , end=" ") 
+                print( self.result( self.pwins()) , end=" ") 
                 print( self.resultMsg())
                 print("")
+
 
 game = RPSGame()
