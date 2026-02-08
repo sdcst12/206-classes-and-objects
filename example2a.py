@@ -59,11 +59,11 @@ def pwins(p,c):
     """
 
 def result(score):
-    return( {1:"Player wins!",0:"Tie!",-1:"Player Loses"}[score])
+    return( {1:"Player wins,",0:"Tie,",-1:"Player Loses,"}[score])
 
 def resultMsg(a,b):
     if a == b:
-        return f"Both chose {a}"
+        return f"Both chose {choices[a]}"
     game = [a,b]
     game.sort()
     #print(game)
