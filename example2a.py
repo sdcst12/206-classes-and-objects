@@ -4,10 +4,15 @@ import time
 
 
 debug = False
+choices = {
+    "R" : "Rock",
+    "S" : "Scissors",
+    "P" : "Paper"
+}
 
 def playerChoice(testing):
     choice = ""
-    valids = ['R','P','S']
+    valids = ['R','P','S','X']
     names = { 
         'R' : "Rock",
         'S' : "Scissors",
@@ -15,17 +20,21 @@ def playerChoice(testing):
         }
 
     if testing:
+        print("\n")
         return random.choice(valids)
     
     while choice not in valids:
-        choice = input("Make your move:\nR rock\nP paper\nS scissors\n>")
+        choice = input("Make your move:\nR rock\nP paper\nS scissors\nX Quit\n>").upper()
         if choice not in valids:
             print("That is not a valid choice\n")
-    print("\n")
     return choice
 
 def computerChoice():
     return random.choice(['R','P','S'])
+
+def showChoices(player,computer):
+    print(f"Player chooses {choices[player]}")
+    print(f"Computer chooses {choices[computer]}")
 
 def pwins(p,c):
     score = {
@@ -59,18 +68,20 @@ def resultMsg(a,b):
     game.sort()
     #print(game)
     if game == ['P','R']:
-        return "Paper covers rock"
+        return "Paper covers rock!"
     elif game == ['P','S']:
         return "Scissors cuts paper!"
     elif game == ['R','S']:
-        return "Rock crushers scissors!"
+        return "Rock crushes scissors!"
 
 if __name__ == "__main__":
-    while True:
+    player = ""
+    while player != "X":
         player = playerChoice(debug)
-        computer = computerChoice()
-        time.sleep(1)
-
-        print( result( pwins(player,computer)))
-        print( resultMsg(player,computer))
-        print("")
+        if player != "X":
+            computer = computerChoice()
+            showChoices(player,computer)
+            time.sleep(1)
+            print( result( pwins(player,computer)) , end=" ") 
+            print( resultMsg(player,computer))
+            print("")
