@@ -3,7 +3,7 @@ import random
 import time
 
 
-debug = False
+debug = True
 choices = {
     "R" : "Rock",
     "S" : "Scissors",
@@ -13,6 +13,7 @@ choices = {
 def playerChoice(testing):
     choice = ""
     valids = ['R','P','S','X']
+    choices = ['R','P','S']
     names = { 
         'R' : "Rock",
         'S' : "Scissors",
@@ -21,7 +22,7 @@ def playerChoice(testing):
 
     if testing:
         print("\n")
-        return random.choice(valids)
+        return random.choice(choices)
     
     while choice not in valids:
         choice = input("Make your move:\nR rock\nP paper\nS scissors\nX Quit\n>").upper()

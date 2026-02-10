@@ -4,7 +4,7 @@ import time
 
 
 class RPSGame:
-    debug = False
+    debug = True
     choices = {
         "R" : "Rock",
         "S" : "Scissors",
@@ -13,6 +13,7 @@ class RPSGame:
     playerChoice = ""
     computerChoice = ""
     valids = ['R','P','S','X']
+    ptestchoices = ['R','P','S']
     names = { 
             'R' : "Rock",
             'S' : "Scissors",
@@ -22,8 +23,7 @@ class RPSGame:
     def getPlayerChoice(self):
         self.playerChoice = ""
         if self.debug:
-            print("\n")
-            return random.choice(self.valids)
+            self.playerChoice =  random.choice(self.ptestchoices)
         
         while self.playerChoice not in self.valids:
             self.playerChoice = input("Make your move:\nR rock\nP paper\nS scissors\nX Quit\n>").upper()
@@ -84,9 +84,10 @@ class RPSGame:
             if self.playerChoice != "X":
                 self.getComputerChoice()
                 self.showChoices()
-                time.sleep(1)
+                time.sleep(0.1)
                 print( self.result( self.pwins()) , end=" ") 
                 print( self.resultMsg())
+                time.sleep(1)
                 print("")
 
 
